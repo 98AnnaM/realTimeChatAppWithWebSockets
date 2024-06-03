@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+
+<div class="container">
+    <div th:replace="~{fragments/commons::navbar}"></div>
+    <div class="content content-container">
+        <div id="tittle">
+            <h1>All users <span th:text="${title}"></span></h1>
+        </div>
+        <div id="users">
+            <h3>Users number (<span th:text="${usersNumber}"></span> users)</h3>
+            <table>
+                <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                    <th>Country</th>
+                    <th>Date</th>
+                    <th>Delete/Edit</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="u : ${users}">
+                    <td><span th:text="${u.username}">Username </span></td>
+                    <td><span th:text="${u.email}">Email </span></td>
+                    <td><span th:text="${u.age}">Age </span></td>
+                    <td><span th:text="${u.country}">Country </span></td>
+                    <td><span th:text="${#dates.format(u.date, 'dd-MM-yyyy HH:mm:ss')}">Date </span></td>
+                    <td>
+                        <form class="delete-button"
+                              th:action="@{/delete/{id}(id=${u.id})}" th:method="delete">
+                            <button class="btn btn-secondary btn-danger" type="submit">Delete</button>
+                        </form>
+                        <a class="btn btn-secondary edit-button" th:href="@{/edit/{id}(id=${u.id})}">Edit</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

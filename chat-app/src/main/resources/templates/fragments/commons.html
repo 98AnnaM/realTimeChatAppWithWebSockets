@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Users record Demo Application</title>
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="header" th:fragment="navbar">
+    <h1>Users record Demo Application</h1>
+    <th:block sec:authorize="isAuthenticated()">
+        <h1 style="color: red;">You can start chatting <span th:text="${#authentication.principal.username}"></span>
+        </h1>
+    </th:block>
+    <div class="button-container">
+        <a class="button" href="/">Home</a>
+        <th:block sec:authorize="!isAuthenticated()">
+            <a class="button" href="register">Register</a>
+            <a class="button" href="/login">Login</a>
+        </th:block>
+        <th:block sec:authorize="isAuthenticated()">
+            <form style="display: inline-block;" th:action="@{/logout}" th:method="post">
+                <input class="button" th:value="'Logout ' + ${#authentication.principal.username}" type="submit">
+            </form>
+            <a class="button" href="/subscriptions">Subscribtions</a>
+        </th:block>
+        <a class="button" href="/report">Report</a>
+        <a class="button" href="/search">Filter Users</a>
+        <a class="button" href="/under18">Users under 18</a>
+        <a class="button" href="/fromBulgaria">Users from Bulgaria</a>
+        <a class="button" href="/quote">Quote</a>
+        <th:block sec:authorize="isAuthenticated()">
+            <a class="button" href="/startChat">Chat rooms</a>
+        </th:block>
+    </div>
+</div>
+

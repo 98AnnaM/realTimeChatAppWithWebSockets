@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+
+<div class="container">
+    <div th:replace="~{fragments/commons::navbar}"></div>
+    <div class="content">
+        <h3> Login</h3>
+
+        <p class="invalid-feedback" id="error-message" th:if="${bad_credentials}">
+            Invalid username or password.
+        </p>
+
+        <form id="loginForm" th:action="@{/login}" th:method="post">
+            <div>
+                <div class="field" style="margin-bottom: 20px;">
+                    <label for="username">Username: </label>
+                    <!-- Predefine username if available -->
+                    <input aria-describedby="usernameHelpInline"
+                           class="form-control"
+                           id="inputUsername"
+                           name="username"
+                           th:value="${username}"
+                           type="text"/>
+                </div>
+
+                <div class="field" style="margin-bottom: 20px;">
+                    <label for="password">Password: </label>
+                    <input class="form-control"
+                           id="password"
+                           name="password"
+                           placeholder="Password"
+                           type="password"/>
+                </div>
+
+                <div class="saveButton">
+                    <input id="loginButton" type="submit" value="Login">
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+
+<div class="container content-container">
+    <div th:replace="~{fragments/commons::navbar}"></div>
+
+    <div class="content">
+        <h1>Subscription Service</h1>
+        <button id="subscribeUsdButton"
+                th:text="${isSubscribedUsd} ? 'Unsubscribe USD' : 'Subscribe USD'"
+                onclick="toggleSubscription('USD')"></button>
+        <button id="subscribeEurButton"
+                th:text="${isSubscribedEur} ? 'Unsubscribe EUR' : 'Subscribe EUR'"
+                onclick="toggleSubscription('EUR')"></button>
+        <h2>Data:</h2>
+        <div id="data">No data</div>
+        <input type="hidden" id="loggedInUsername" th:value="${#authentication.name}" />
+        <input type="hidden" id="isSubscribedUsd" th:value="${isSubscribedUsd}" />
+        <input type="hidden" id="isSubscribedEur" th:value="${isSubscribedEur}" />
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/sockjs/1.1.4/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+<script>
+    let stompClient = null;
+    let isSubscribedUsd = document.getElementById('isSubscribedUsd').value === 'true';
+    let isSubscribedEur = document.getElementById('isSubscribedEur').value === 'true';
+    let loggedInUsername = document.getElementById("loggedInUsername").value;
+
+    function connect() {
+        const socket = new SockJS('/ws');
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, onConnected, onError);
+    }
+
+    function onConnected() {
+        stompClient.subscribe(`/user/${loggedInUsername}/mock/messages`, function (message) {
+            try {
+                const parsedMessage = JSON.parse(message.body);
+                console.log('Received message: ', parsedMessage); // Log each message
+                showMessage(parsedMessage);
+            } catch (e) {
+                console.error('Error parsing message: ', e);
+            }
+        });
+    }
+
+    function onError(error) {
+        console.error('Connection error: ', error);
+    }
+
+    function disconnect() {
+        if (stompClient !== null) {
+            stompClient.disconnect();
+        }
+        console.log("Disconnected");
+    }
+
+    function toggleSubscription(symbol) {
+        if (symbol === 'USD') {
+            if (isSubscribedUsd) {
+                unsubscribe('USD');
+            } else {
+                subscribe('USD');
+            }
+        } else if (symbol === 'EUR') {
+            if (isSubscribedEur) {
+                unsubscribe('EUR');
+            } else {
+                subscribe('EUR');
+            }
+        }
+    }
+
+    function subscribe(symbol) {
+        if (stompClient) {
+            stompClient.send("/app/subscribe", {}, JSON.stringify(symbol));
+            console.log(`Subscribed to ${symbol} successfully`);
+            if (symbol === 'USD') {
+                document.getElementById("subscribeUsdButton").innerText = "Unsubscribe USD";
+                isSubscribedUsd = true;
+            } else if (symbol === 'EUR') {
+                document.getElementById("subscribeEurButton").innerText = "Unsubscribe EUR";
+                isSubscribedEur = true;
+            }
+        }
+    }
+
+    function unsubscribe(symbol) {
+        if (stompClient) {
+            stompClient.send("/app/unsubscribe", {}, JSON.stringify(symbol));
+            console.log(`Unsubscribed from ${symbol} successfully`);
+            if (symbol === 'USD') {
+                document.getElementById("subscribeUsdButton").innerText = "Subscribe USD";
+                isSubscribedUsd = false;
+            } else if (symbol === 'EUR') {
+                document.getElementById("subscribeEurButton").innerText = "Subscribe EUR";
+                isSubscribedEur = false;
+            }
+        }
+    }
+
+    function showMessage(message) {
+        if (message && message.symbol && message.price) {
+            const dataDiv = document.getElementById("data");
+            if (dataDiv.innerText === "No data") {
+                dataDiv.innerText = "";
+            }
+
+            // Create a unique ID for each symbol's div
+            const symbolDivId = `symbol-${message.symbol}`;
+            let symbolDiv = document.getElementById(symbolDivId);
+
+            if (symbolDiv) {
+                // If the div already exists, update its content
+                symbolDiv.innerText = `Symbol: ${message.symbol}, Price: ${message.price}`;
+            } else {
+                // If the div does not exist, create it
+                symbolDiv = document.createElement("div");
+                symbolDiv.id = symbolDivId;
+                symbolDiv.innerText = `Symbol: ${message.symbol}, Price: ${message.price}`;
+                dataDiv.appendChild(symbolDiv);
+            }
+        } else {
+            console.error('Invalid message format: ', message);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        connect();
+    });
+</script>
+
+</body>
+</html>

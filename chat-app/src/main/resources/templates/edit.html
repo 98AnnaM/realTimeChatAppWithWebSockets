@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+
+<div class="container">
+    <div th:replace="~{fragments/commons::navbar}"></div>
+    <div class="content content-container">
+        <h3>Update User Information</h3>
+        <form th:action="@{/edit/{id}(id=${editUserDto.id})}"
+              th:method="put"
+              th:object="${editUserDto}">
+            <div>
+                <div class="field" style="margin-bottom: 20px;">
+                    <label>Username: </label>
+                    <input class="form-control"
+                           id="username"
+                           placeholder="Username"
+                           th:errorclass="is-invalid"
+                           th:field="*{username}"
+                           type="text"/>
+
+                    <div class="invalid-feedback"
+                         th:each="err : ${#fields.errors('username')}"
+                         th:text="${err}">Enter a valid username!
+                    </div>
+                </div>
+
+
+                <div class="field" style="margin-bottom: 20px;">
+                    <label>Email: </label>
+                    <input class="form-control"
+                           id="email"
+                           placeholder="Email"
+                           th:errorclass="is-invalid"
+                           th:field="*{email}"
+                           type="text"/>
+
+                    <div class="invalid-feedback"
+                         th:each="err : ${#fields.errors('email')}"
+                         th:text="${err}">Enter a valid email address!
+                    </div>
+                </div>
+
+
+                <div class="field" style="margin-bottom: 20px;">
+                    <label>Age: </label>
+                    <input class="form-control"
+                           id="age"
+                           placeholder="Age"
+                           th:errorclass="is-invalid"
+                           th:field="*{age}"
+                           type="text"/>
+
+                    <div class="invalid-feedback"
+                         th:each="err : ${#fields.errors('age')}"
+                         th:text="${err}">Enter a valid age!
+                    </div>
+                </div>
+
+
+                <div class="field" style="margin-bottom: 20px;">
+                    <label>Country: </label>
+                    <input class="form-control"
+                           id="country"
+                           placeholder="Country"
+                           th:errorclass="is-invalid"
+                           th:field="*{country}"
+                           type="text"/>
+
+                    <div class="invalid-feedback error-message"
+                         th:each="err : ${#fields.errors('country')}"
+                         th:text="${err}">Enter a valid country!
+                    </div>
+                </div>
+
+
+                <div class="saveButton">
+                    <input type="submit" value="Save user">
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

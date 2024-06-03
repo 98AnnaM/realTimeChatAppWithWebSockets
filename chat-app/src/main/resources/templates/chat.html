@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="/css/chat.css" rel="stylesheet">
+    <title>Chat Application</title>
+</head>
+<body>
+
+<div th:replace="~{fragments/commons::navbar}"></div>
+
+<div class="content-container">
+    <div id="username-page"
+         th:attr="data-username=${loggedInUsername}, data-userid=${loggedInUserId}">
+        <button class="btn-online" id="enter-button" type="button">Go Online</button>
+    </div>
+
+    <div class="chat-container hidden" id="chat-page">
+        <div class="users-list">
+            <div class="users-list-container">
+                <h2>Online Users</h2>
+                <ul id="connectedUsers">
+                </ul>
+            </div>
+            <div>
+                <p id="connected-user-fullname"></p>
+                <a class="logout" href="javascript:void(0)" id="logout">Go OFFLINE</a>
+            </div>
+        </div>
+
+        <div class="chat-area">
+            <div class="chat-area" id="chat-messages">
+            </div>
+
+            <form class="hidden" id="messageForm" name="messageForm">
+                <div class="message-input">
+                    <input autocomplete="off" id="message" placeholder="Type your message..." type="text">
+                    <button>Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="/js/main.js"></script>
+
+</body>
+</html>

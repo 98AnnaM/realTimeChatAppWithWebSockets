@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+
+<div class="container content-container">
+    <div th:replace="~{fragments/commons::navbar}"></div>
+
+    <div class="content">
+        <h2>Welcome!</h2>
+        <div class="image-container">
+            <img src="/images/smile.png">
+        </div>
+        <p> This is a simple application</p>
+        <p> that supports CRUD operations for users.</p>
+    </div>
+</div>
+
+</body>
+
+</html>

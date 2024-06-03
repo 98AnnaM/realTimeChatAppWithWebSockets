@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8448594c-38da-4dc0-a7d5-95b847b11ffb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/AAPL_symbol_service/src/main/java/com/devexperts/aapl_symbol_service/MockDataController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AAPL_symbol_service/src/main/java/com/devexperts/aapl_symbol_service/SymbolDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chat-app/src/main/java/com/devexperts/chatapp/a_try/SubscriptionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chat-app/src/main/java/com/devexperts/chatapp/a_try/SubscriptionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chat-app/src/main/java/com/devexperts/chatapp/a_try/WebSocketService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chat-app/src/main/resources/templates/subscriptionForm.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chat-app/src/main/resources/templates/subscriptionResult.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat-app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chat-app/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat-app/src/main/resources/templates/fragments/commons.html" beforeDir="false" afterPath="$PROJECT_DIR$/chat-app/src/main/resources/templates/fragments/commons.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2gokq7bUjKBlzldf8SO5RHBNkUv" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "DIS-4938-create-a-user-record-application",
+    "kotlin-language-version-configured": "true",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8448594c-38da-4dc0-a7d5-95b847b11ffb" name="Changes" comment="" />
+      <created>1716371505367</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716371505367</updated>
+      <workItem from="1716371506431" duration="25000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

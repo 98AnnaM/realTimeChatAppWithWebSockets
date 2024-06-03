@@ -1,0 +1,48 @@
+services:
+  postgres:
+    container_name: postgres-sql
+    image: postgres
+    volumes:
+      - pg_data:/usr/share/postgres/data
+    networks:
+      - web-socket-chat
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: users-chat-db
+
+  chat-app:
+    container_name: chat-app
+    image: amileva/chat_app:2.0
+    ports:
+      - '8080:8080'
+    networks:
+      - web-socket-chat
+
+  mocked_quote_service:
+    container_name: mocked-quote-service
+    image: amileva/mocked_quote_service:1.0
+    ports:
+      - '8082:8082'
+    networks:
+      - web-socket-chat
+
+  aaplsymbol_mocked_service:
+    container_name: aaplsymbol-mocked-service
+    image: amileva/aaplsymbol_mocked_service:2.0
+    ports:
+      - '8083:8083'
+    networks:
+      - web-socket-chat
+
+
+volumes:
+  pg_data:
+    name: users-chat-postgres-data-11.10
+
+networks:
+  web-socket-chat:
+    driver: bridge
+

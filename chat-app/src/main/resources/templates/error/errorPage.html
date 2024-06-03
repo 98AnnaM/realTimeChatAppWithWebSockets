@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+
+<div class="container">
+    <div th:replace="~{fragments/commons::navbar}"></div>
+
+
+    <div class="content">
+        <h2><span th:text="${errorMessage}"></span></h2>
+        <div class="image-container">
+            <img src="/images/error.jpg">
+        </div>
+    </div>
+
+
+</div>
+</body>
+
+</html>
