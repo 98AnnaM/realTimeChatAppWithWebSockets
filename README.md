@@ -16,6 +16,8 @@
 - Implement caching with Java cache manager.
 - Use Postgres DB.
 
+## Screenshots
+
 ![Image Description](https://github.com/98AnnaM/realTimeChatAppWithWebSockets/assets/147516467/489feb8c-e991-4e49-bd57-b457b84115d4)
 
 ![Image Description](https://github.com/98AnnaM/realTimeChatAppWithWebSockets/assets/147516467/c27e783b-d29d-43bb-b92d-506eebd8ab43)
