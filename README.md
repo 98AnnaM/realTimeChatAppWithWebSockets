@@ -16,11 +16,11 @@
 - Implement caching with Java cache manager.
 - Use Postgres DB.
 
-![Image Description](https://github.com/98AnnaM/realTimeChatAppWithWebSockets/issues/1#issuecomment-2145564491)
+![Image Description](https://github.com/98AnnaM/realTimeChatAppWithWebSockets/assets/147516467/489feb8c-e991-4e49-bd57-b457b84115d4)
 
-![Image Description](https://github.com/98AnnaM/realTimeChatAppWithWebSockets/issues/1#issuecomment-2145565562)
+![Image Description](https://github.com/98AnnaM/realTimeChatAppWithWebSockets/assets/147516467/c27e783b-d29d-43bb-b92d-506eebd8ab43)
 
-![Image Description](https://github.com/98AnnaM/realTimeChatAppWithWebSockets/issues/1#issuecomment-2145566045)
+![Image Description](https://github.com/98AnnaM/realTimeChatAppWithWebSockets/assets/147516467/d550d22c-287e-451c-b4b1-28d834ef7015)
 
 
 
